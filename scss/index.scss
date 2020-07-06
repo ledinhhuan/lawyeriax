@@ -1,24 +1,8 @@
 // Variables
-$background: #fff;
-$color: #775f5e;
-$color-visited: #db3936;
-$color-link: #301700;
+@import "./variables";
+@import "./base";
+@import "./mixins";
 
-$font-playfair: 'Playfair Display', serif;
-@mixin color-link($color: #330505) {
-  color: $color;
-  text-decoration: none;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #330505;
-  font-family: $font-playfair;
-  font-weight: 400;
-}
 
 .border-left-shadow {
   padding-left: 24px;
@@ -41,12 +25,13 @@ body {
 .header-inline {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  align-items: center;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
+  margin: 0;
   &__item {
     display: block;
     padding: 5px 10px;
@@ -66,20 +51,66 @@ body {
     }
   }
 }
-
-// ribbon
-.ribbon-inner {
-  padding: 50px 0;
-  &__title {
-    margin-bottom: 0;
-    color: #330505;
-    font-family: $font-playfair;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 40px;
-    text-align: center;
+// carousel
+.carousel-item {
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(76,76,76,0.5);
+    content: "";
   }
 }
+
+.carousel-control-prev, .carousel-control-next {
+  display: block;
+  z-index: 99;
+  top: 45%;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  opacity: 1;
+  background: rgba(255,255,255,0.25);
+  text-shadow: none;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+}
+.carousel-control-next {
+  right: 20px;
+  left: auto;
+}
+
+.carousel-control-next-icon:after, .carousel-control-prev-icon:after {
+  color: #B03230 !important;
+}
+
+
+.carousel-content {
+  position: absolute;
+  z-index: 10;
+  top: 20%;
+  left: 10%;
+  &__title {
+    margin-bottom: 30px;
+    font-size: 80px;
+    line-height: 90px;
+    font-weight: 600;
+    color: #FFF;
+  }
+  &__desc {
+    margin-bottom: 30px;
+    font-family: $font-playfair;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #FFF;
+  }
+}
+
 .section-line {
   height: 1px;
   background-color: #f7eaea;
@@ -87,10 +118,6 @@ body {
 }
 
 // features
-.features-wrapper {
-  padding: 50px 0;
-}
-
 .feature {
   &__title {
     display: flex;
@@ -117,8 +144,6 @@ body {
     font-family: $font-playfair;
   }
   &__desc {
-    padding-left: 24px;
-    box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.1);
     font-size: 13px;
     line-height: 25px;
   }
@@ -154,8 +179,6 @@ body {
     }
   }
   &__desc {
-    box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.1);
-    padding-left: 24px;
     margin: 0 0 0 20px;
   }
   &__title {
@@ -227,10 +250,6 @@ body {
     line-height: 24px;
     color: #db3936;
   }
-  &__content {
-    box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.1);
-    padding-left: 24px;
-  }
 }
 
 // about
@@ -248,10 +267,6 @@ body {
     font-size: 24px;
     line-height: 34px;
     color: #330505;
-  }
-  &__content {
-    box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.1);
-    padding-left: 24px;
   }
 }
 
@@ -272,10 +287,6 @@ body {
 }
 
 // latest new
-.latest-new-wrapper {
-  padding: 50px 0;
-}
-
 .latest-new {
   display: flex;
   &__date {
@@ -331,8 +342,6 @@ body {
 }
 
 .latest-new-content {
-  box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.1);
-  padding-left: 24px;
   p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -415,15 +424,33 @@ footer {
     .menu {
       list-style: none;
       padding: 0;
-      &__item {
-        a {
-          color: #878787;
-        }
-      }
       .active {
         a {
           color: #db3936;
         }
+      }
+    }
+  }
+  .contact-us {
+    &__title {
+      color: #fff;
+      font-size: 18px;
+      line-height: 28px;
+    }
+    .form-action {
+      &__input {
+        width: 100%;
+        border-radius: 5px;
+        margin: 10px 0;
+        border: none;
+        outline: none;
+      }
+      &__submit {
+        background: #db3936;
+        box-shadow: inset 4px 0 0 0 rgba(50, 50, 50, 0.25);
+        border: none;
+        color: #fff;
+        padding: 0.5rem 1rem;
       }
     }
   }

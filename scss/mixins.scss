@@ -1,0 +1,4 @@
+@mixin color-link($color: #330505) {
+  color: $color;
+  text-decoration: none;
+}
